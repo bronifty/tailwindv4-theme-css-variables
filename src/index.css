@@ -4,9 +4,10 @@
 /* Define the theme using @theme */
 @theme {
   /* Base colors */
-  --color-background: #ffffff;
-  --color-text: #000000;
-  --color-primary: #3b82f6;
+  --color-background: #1f2937;
+  --color-text: #f3f4f6;
+  --color-primary: #60a5fa;
+  
   
   /* Additional theme properties */
   --font-display: "Inter", "sans-serif";
@@ -17,10 +18,10 @@
 /* Light theme is the default in @theme above */
 
 /* Dark theme overrides via data-theme attribute */
-html[data-theme="dark"] {
-  --color-background: #1f2937;
-  --color-text: #f3f4f6;
-  --color-primary: #60a5fa;
+html[data-theme="light"] {
+  --color-background: #ffffff;
+  --color-text: #000000;
+  --color-primary: #3b82f6;
 }
 
 /* Base styles */
