@@ -1,7 +1,10 @@
 import React from 'react';
+
 const ThemeContext = React.createContext();
+
 export const ThemeProvider = ({children}) => {
-    const [theme, setTheme] = React.useState('dark'); // Start with light theme by default
+    // Start with dark theme by default to match our CSS theme variables
+    const [theme, setTheme] = React.useState('dark');
     
     // Apply theme to document on initial render and when theme changes
     React.useEffect(() => {
@@ -25,4 +28,5 @@ export const ThemeProvider = ({children}) => {
         </ThemeContext.Provider>
     )
 }
+
 export const useTheme = () => React.useContext(ThemeContext);

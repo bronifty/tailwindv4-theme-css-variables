@@ -1,23 +1,23 @@
 // NavBar.jsx
-import { Link, Button } from 'react-aria-components';
+import React from 'react';
+import { useTheme } from './TailwindThemeContext';
 
 function NavBar() {
+  const { theme, toggleTheme } = useTheme();
+  
   return (
-    <nav className="flex items-center justify-between p-4 shadow-md">
-      <div className="flex space-x-4">
-        <Link href="/" className="nav-link">
-          Home
-        </Link>
-        <Link href="/about" className="nav-link">
-          About
-        </Link>
-        <Link href="/contact" className="nav-link">
-          Contact
-        </Link>
+    <nav className="nav-container">
+      <div className="nav-menu">
+        <a href="/" className="nav-link">Home</a>
+        <a href="/about" className="nav-link">About</a>
+        <a href="/contact" className="nav-link">Contact</a>
       </div>
-      <Button className="btn-primary">
-        Sign In
-      </Button>
+      <button 
+        onClick={toggleTheme} 
+        className="btn-secondary"
+      >
+        {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+      </button>
     </nav>
   );
 }

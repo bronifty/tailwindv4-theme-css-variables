@@ -7,11 +7,15 @@ import NavBar from './Navbar';
 function App() {
   return (
     <ThemeProvider>
-     
+      <div className="container-app">
         <NavBar />
-       
-          <ThemedComponent />
-     
+        <div className="content-section">
+          <h1 className="page-title">Tailwind CSS v4 Theme Demo</h1>
+          <div className="max-w-2xl mx-auto">
+            <ThemedComponent />
+          </div>
+        </div>
+      </div>
     </ThemeProvider>
   );
 }

@@ -3,24 +3,33 @@
 
 /* Define the theme using @theme */
 @theme {
-  /* Base colors */
+  /* Base colors - dark by default */
   --color-background: #1f2937;
   --color-text: #f3f4f6;
   --color-primary: #60a5fa;
+  --color-secondary: #9ca3af;
+  --color-accent: #f59e0b;
+  --color-success: #10b981;
+  --color-error: #ef4444;
   
   /* Additional theme properties */
   --font-display: "Inter", "sans-serif";
   --breakpoint-3xl: 1920px;
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-/* Light theme is the default in @theme above */
-
-/* Dark theme overrides via data-theme attribute */
+/* Light theme overrides via data-theme attribute */
 html[data-theme="light"] {
   --color-background: #ffffff;
   --color-text: #000000;
   --color-primary: #3b82f6;
+  --color-secondary: #6b7280;
+  --color-accent: #d97706;
+  --color-success: #059669;
+  --color-error: #dc2626;
 }
 
 /* Base styles */
@@ -28,18 +37,91 @@ html[data-theme="light"] {
   body {
     @apply bg-[var(--color-background)] text-[var(--color-text)];
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: var(--font-display);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  a {
+    @apply text-[var(--color-primary)] hover:underline;
   }
 }
 
 /* Component styles */
 @layer components {
+  /* Navigation components */
   .nav-link {
     @apply text-[var(--color-text)] hover:text-[var(--color-primary)] transition-colors duration-200;
   }
   
+  .nav-container {
+    @apply flex items-center justify-between p-4 shadow-md bg-[var(--color-background)];
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .nav-menu {
+    @apply flex space-x-4;
+  }
+  
+  /* Button components */
+  .btn {
+    @apply px-4 py-2 rounded-md transition-all duration-200 cursor-pointer;
+  }
+  
   .btn-primary {
-    @apply bg-[var(--color-primary)] text-white px-4 py-2 rounded-md 
-           hover:opacity-90 transition-all duration-200 cursor-pointer;
+    @apply btn bg-[var(--color-primary)] text-white hover:opacity-90;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-[var(--color-secondary)] text-white hover:opacity-90;
+  }
+  
+  .btn-accent {
+    @apply btn bg-[var(--color-accent)] text-white hover:opacity-90;
+  }
+  
+  /* Card components */
+  .card {
+    @apply bg-[var(--color-background)] rounded-lg p-6 transition-all duration-300;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .card-header {
+    @apply text-2xl font-bold mb-4;
+  }
+  
+  .card-body {
+    @apply mb-4;
+  }
+  
+  .card-footer {
+    @apply mt-4 pt-4 border-t border-[var(--color-secondary)]/20;
+  }
+  
+  /* Layout components */
+  .container-app {
+    @apply min-h-screen bg-[var(--color-background)] text-[var(--color-text)] transition-colors duration-300;
+  }
+  
+  .content-section {
+    @apply container mx-auto px-4 py-8;
+  }
+  
+  .page-title {
+    @apply text-3xl font-bold text-center mb-8;
+  }
+}
+
+/* Utility styles */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .transition-theme {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 }
 
