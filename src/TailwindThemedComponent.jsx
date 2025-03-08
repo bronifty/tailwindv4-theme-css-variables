@@ -18,12 +18,12 @@ export default function TailwindThemedComponent() {
             </div>
             
             <div className="card-footer">
-                <button 
+                {/* <button 
                     onClick={toggleTheme}
                     className="btn-primary"
                 >
                     Switch to {theme === 'light' ? 'Dark' : 'Light'} Theme
-                </button>
+                </button> */}
             </div>
         </div>
     )
